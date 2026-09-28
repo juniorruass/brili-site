@@ -1,0 +1,50 @@
+/* Efeitos de fundo e parallax (prévia) */
+
+/* Camada de efeitos fica atrás do conteúdo da seção */
+.efx-camada { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+[data-drip] > .wrap, [data-drip] > .depo { position: relative; z-index: 1; }
+
+/* Chuva de granulado na hero */
+.confeito {
+  position: absolute; top: -30px; left: var(--x);
+  width: 14px; height: 5px; border-radius: 3px;
+  background: var(--cor);
+  opacity: .75;
+  animation: cair var(--dur) linear var(--delay) infinite;
+}
+.confeito--bola { width: 8px; height: 8px; border-radius: 50%; }
+.confeito--estrela { width: 13px; height: 13px; background: none; }
+.confeito--estrela svg { width: 100%; height: 100%; fill: var(--cor); }
+@keyframes cair {
+  from { transform: translate(0, 0) rotate(var(--r0)); }
+  to { transform: translate(var(--dx), var(--dist)) rotate(calc(var(--r0) + 420deg)); }
+}
+
+/* Corações e estrelinhas subindo (sabores e personalizados) */
+.flutuante {
+  position: absolute; bottom: -40px; left: var(--x);
+  width: var(--tam); height: var(--tam);
+  opacity: 0;
+  animation: subir var(--dur) linear var(--delay) infinite;
+}
+.flutuante svg { width: 100%; height: 100%; fill: var(--cor); }
+@keyframes subir {
+  0% { transform: translate(0, 0) rotate(-10deg); opacity: 0; }
+  12% { opacity: .55; }
+  50% { transform: translate(var(--dx), calc(var(--dist) * -.5)) rotate(10deg); }
+  88% { opacity: .55; }
+  100% { transform: translate(0, calc(var(--dist) * -1)) rotate(-10deg); opacity: 0; }
+}
+
+/* Brilhinhos nos depoimentos */
+.brilho {
+  position: absolute; left: var(--x); top: var(--y);
+  width: var(--tam); height: var(--tam); border-radius: 50%;
+  background: var(--creme);
+  box-shadow: 0 0 8px rgba(255, 246, 236, .6);
+  animation: piscar var(--dur) ease-in-out var(--delay) infinite;
+}
+@keyframes piscar {
+  0%, 100% { opacity: .1; transform: scale(.6); }
+  50% { opacity: .7; transform: scale(1); }
+}
