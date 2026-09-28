@@ -52,7 +52,7 @@ const TRABALHOS = [
 ];
 
 // Prints dos depoimentos: salvar em img/depoimentos/ e listar aqui, na ordem em que devem aparecer
-const DEPOIMENTOS = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"];
+const DEPOIMENTOS = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
 
 const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -243,12 +243,17 @@ function repetir(lista, larguraItem) {
 function montarDepoimentos() {
   // Uma volta completa + a mesma volta de novo: quando a primeira sai, a segunda está no mesmo lugar e o loop não "pula"
   const el = document.getElementById("fila-depoimentos");
-  const volta = repetir(DEPOIMENTOS, 250);
+  const volta = repetir(DEPOIMENTOS, 350);
   const n = DEPOIMENTOS.length;
   el.innerHTML = [...volta, ...volta].map((arq, i) => print(arq, i % n, i >= n)).join("");
   el.querySelectorAll("img").forEach(img => {
-    if (img.complete && !img.naturalWidth) reservado(img);
-    else img.addEventListener("error", () => reservado(img));
+    const medir = () => img.style.setProperty("--w", img.naturalWidth);
+    if (img.complete && img.naturalWidth) medir();
+    else if (img.complete) reservado(img);
+    else {
+      img.addEventListener("load", medir);
+      img.addEventListener("error", () => reservado(img));
+    }
   });
   el.style.setProperty("--tempo", `${volta.length * 7}s`);
 }

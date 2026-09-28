@@ -231,9 +231,11 @@ p { margin: 0; }
 }
 @keyframes correr { to { transform: translateX(-50%); } }
 
+/* Recortes do balão do WhatsApp: todos na mesma escala, pra letra ficar do mesmo tamanho */
 .print {
+  --escala: .62;
   flex: none; margin: 0;
-  height: 400px; width: auto;
+  width: calc(var(--w, 360) * var(--escala) * 1px); height: auto;
   border-radius: 18px;
   box-shadow: 0 3px 0 rgba(0, 0, 0, .2), 0 18px 36px rgba(0, 0, 0, .25);
   background: var(--creme);
@@ -289,7 +291,7 @@ p { margin: 0; }
 @media (max-width: 880px) {
     .hero { padding-top: 110px; padding-bottom: 110px; }
   .hero__in, .duo { grid-template-columns: 1fr; }
-  .print { height: 320px; }
+  .print { --escala: .56; }
   .redonda { width: 180px; }
   .redonda:nth-child(3n + 2) { width: 140px; margin-top: -50px; }
   .redonda:nth-child(3n) { width: 160px; margin-top: 44px; }
