@@ -2,12 +2,12 @@
 const WHATSAPP = "5573988208921";
 
 const MENSAGENS = {
-  pedido: "Oi, Brilí! Vim pelo site e quero fazer um pedido.",
+  pedido: "Oi, Brilí! Vim pelo site e quero fazer um pedido. 💖",
   tradicionais: "Oi, Brilí! Vim pelo site e quero encomendar docinhos tradicionais.",
   gourmet: "Oi, Brilí! Vim pelo site e quero encomendar docinhos gourmet.",
   copinhos: "Oi, Brilí! Vim pelo site e quero encomendar copinhos.",
   personalizado: "Oi, Brilí! Vim pelo site e quero doces personalizados pra minha festa.",
-  oi: "Oi, Brilí! Vim pelo site e quero saber mais sobre os doces.",
+  oi: "Oi, Brilí! Vim pelo site e quero fazer um pedido. 💖",
 };
 
 const CARDAPIO = [
